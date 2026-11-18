@@ -55,6 +55,11 @@ export function localIso(date: Date): string {
   );
 }
 
+/** "2026-11-18 06:05" from a localIso string: the walker's own clock time, for the screen. */
+export function shortTime(iso: string): string {
+  return iso.slice(0, 16).replace("T", " ");
+}
+
 export function newWalk(template: Template, store: string, by: string, now = new Date()): Walk {
   return {
     id: crypto.randomUUID(),

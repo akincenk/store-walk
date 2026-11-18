@@ -7,7 +7,7 @@ import { listWalks } from "../src/db";
 afterEach(cleanup);
 
 async function startWalk(user: ReturnType<typeof userEvent.setup>, checklist: string) {
-  await user.selectOptions(screen.getByLabelText("Checklist"), checklist);
+  await user.selectOptions(screen.getByRole("combobox", { name: "Checklist" }), checklist);
   // The form remembers the last store and name, so clear before typing.
   await user.clear(screen.getByLabelText("Store"));
   await user.type(screen.getByLabelText("Store"), "Store 7");
@@ -39,7 +39,7 @@ describe("app", () => {
     expect(screen.queryByRole("alert")).toBeNull();
     await user.click(screen.getByRole("button", { name: "Finish walk" }));
 
-    await screen.findByText(/9 yes, 1 no, 0 n.a./);
+    await screen.findByText(/9 Yes, 1 No, 0 N\/A\.$/);
     const [walk] = await listWalks();
     expect(walk.finishedAt).toBeTruthy();
     expect(walk.answers["close-tills"].note).toBe("Till 2 over by $1.20");

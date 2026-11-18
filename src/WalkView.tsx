@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getWalk, saveWalk } from "./db";
-import { finish, problems, progress, setAnswer, type Answer, type Problem, type Walk } from "./model";
+import { finish, problems, progress, setAnswer, type Answer, shortTime, type Problem, type Walk } from "./model";
 
 const CHOICES: [Answer, string][] = [
   ["yes", "Yes"],
@@ -54,8 +54,8 @@ export function WalkView({ id, onBack }: { id: string; onBack: () => void }) {
       </button>
       <h1>{current.templateName}</h1>
       <p>
-        {current.store}, {current.by}, started {current.startedAt}
-        {locked ? `, finished ${current.finishedAt}` : ""}.
+        {current.store}, {current.by}, started {shortTime(current.startedAt)}
+        {locked ? `, finished ${shortTime(current.finishedAt!)}` : ""}.
       </p>
       <p aria-live="polite">
         {p.answered} of {p.total} answered

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { finish, localIso, newWalk, problems, progress, setAnswer, type Template } from "../src/model";
+import { finish, localIso, shortTime, newWalk, problems, progress, setAnswer, type Template } from "../src/model";
 import { builtInTemplates, validateTemplate } from "../src/templates";
 
 const template: Template = {
@@ -52,8 +52,9 @@ describe("walk model", () => {
     expect(finish(done)).toBe(done);
   });
 
-  it("formats local time with an offset", () => {
+  it("formats local time with an offset, and a short form for the screen", () => {
     expect(localIso(at)).toMatch(/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d[+-]\d\d:\d\d$/);
+    expect(shortTime("2026-11-18T06:05:09-08:00")).toBe("2026-11-18 06:05");
   });
 });
 

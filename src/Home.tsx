@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { summary, walksToCsv } from "./csv";
 import { deleteWalk, listWalks, saveWalk } from "./db";
 import { downloadText } from "./download";
-import { newWalk, progress, type Walk } from "./model";
+import { newWalk, progress, shortTime, type Walk } from "./model";
 import { builtInTemplates } from "./templates";
 
 const LAST = "store-walk:last";
@@ -29,7 +29,7 @@ export function Home({ onOpen }: { onOpen: (id: string) => void }) {
   }
 
   async function remove(w: Walk) {
-    if (!confirm(`Delete the ${w.templateName} walk for ${w.store} started ${w.startedAt}?`)) return;
+    if (!confirm(`Delete the ${w.templateName} walk for ${w.store} started ${shortTime(w.startedAt)}?`)) return;
     await deleteWalk(w.id);
     await reload();
   }
@@ -42,24 +42,18 @@ export function Home({ onOpen }: { onOpen: (id: string) => void }) {
       <h1>store-walk</h1>
       <form onSubmit={start} aria-labelledby="start-heading">
         <h2 id="start-heading">Start a walk</h2>
-        <label>
-          Checklist
-          <select value={templateId} onChange={(e) => setTemplateId(e.target.value)}>
-            {builtInTemplates.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Store
-          <input required value={store} onChange={(e) => setStore(e.target.value)} autoComplete="off" />
-        </label>
-        <label>
-          Your name or initials
-          <input required value={by} onChange={(e) => setBy(e.target.value)} autoComplete="off" />
-        </label>
+        <label htmlFor="start-checklist">Checklist</label>
+        <select id="start-checklist" value={templateId} onChange={(e) => setTemplateId(e.target.value)}>
+          {builtInTemplates.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.name}
+            </option>
+          ))}
+        </select>
+        <label htmlFor="start-store">Store</label>
+        <input id="start-store" required value={store} onChange={(e) => setStore(e.target.value)} autoComplete="off" />
+        <label htmlFor="start-by">Your name or initials</label>
+        <input id="start-by" required value={by} onChange={(e) => setBy(e.target.value)} autoComplete="off" />
         <button type="submit">Start</button>
       </form>
 
@@ -72,7 +66,7 @@ export function Home({ onOpen }: { onOpen: (id: string) => void }) {
             return (
               <li key={w.id}>
                 <span>
-                  {w.templateName}, {w.store}, started {w.startedAt}. {p.answered} of {p.total} answered.
+                  {w.templateName}, {w.store}, started {shortTime(w.startedAt)}. {p.answered} of {p.total} answered.
                 </span>
                 <button onClick={() => onOpen(w.id)}>Continue</button>
                 <button className="secondary" onClick={() => remove(w)}>
@@ -98,7 +92,7 @@ export function Home({ onOpen }: { onOpen: (id: string) => void }) {
             return (
               <li key={w.id}>
                 <span>
-                  {w.templateName}, {w.store}, finished {w.finishedAt} by {w.by}. {s.yes} yes, {s.no} no, {s.na} n.a.
+                  {w.templateName}, {w.store}, finished {shortTime(w.finishedAt!)} by {w.by}. {s.yes} Yes, {s.no} No, {s.na} N/A
                   {s.open ? `, ${s.open} not answered` : ""}.
                 </span>
                 <button onClick={() => onOpen(w.id)}>View</button>
