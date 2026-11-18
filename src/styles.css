@@ -1,0 +1,87 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.4;
+  color: #1b1b1b;
+  background: #fafafa;
+}
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  min-height: 2.75rem;
+}
+input:not([type="radio"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem;
+}
+button {
+  padding: 0.4rem 1rem;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  border: 2px solid #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
+  border-radius: 0.3rem;
+}
+button.secondary {
+  background: #fff;
+  color: #1d4ed8;
+}
+:focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 2px;
+}
+fieldset {
+  border: 1px solid #bbb;
+  border-radius: 0.3rem;
+  margin: 0.75rem 0;
+}
+fieldset.flagged {
+  border: 2px solid #b91c1c;
+}
+.choices {
+  display: flex;
+  gap: 1.5rem;
+}
+.choices label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.choices input {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.req {
+  color: #555;
+  font-size: 0.9em;
+}
+.problems {
+  border: 2px solid #b91c1c;
+  padding: 0.5rem 1rem;
+  background: #fff5f5;
+}
+.walks {
+  list-style: none;
+  padding: 0;
+}
+.walks li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+.walks li span {
+  display: block;
+}
