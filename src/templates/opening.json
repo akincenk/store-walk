@@ -1,0 +1,34 @@
+{
+  "id": "opening",
+  "name": "Store opening",
+  "sections": [
+    {
+      "title": "Building and safety",
+      "items": [
+        { "id": "open-alarm", "text": "Alarm disarmed and no alarm events logged overnight", "required": true },
+        { "id": "open-doors", "text": "Fire exits clear and not blocked by stock", "required": true },
+        { "id": "open-lights", "text": "All sales floor and back room lights on", "required": false },
+        { "id": "open-floor", "text": "Floor dry, no spills or trip hazards at the entrance", "required": true },
+        { "id": "open-firstaid", "text": "First aid kit stocked and in its place", "required": false }
+      ]
+    },
+    {
+      "title": "Cash and systems",
+      "items": [
+        { "id": "open-float", "text": "Till floats counted and match the opening amount", "required": true },
+        { "id": "open-pos", "text": "Every register logs in and prints a test receipt", "required": true },
+        { "id": "open-terminal", "text": "Card terminals connected and approve a test", "required": true },
+        { "id": "open-scanner", "text": "Handheld scanners charged", "required": false }
+      ]
+    },
+    {
+      "title": "Sales floor",
+      "items": [
+        { "id": "open-prices", "text": "Price changes for today are on the shelf", "required": true },
+        { "id": "open-promo", "text": "Promotion signs match this week's flyer", "required": false },
+        { "id": "open-gaps", "text": "No empty facings on the main aisle", "required": false },
+        { "id": "open-chilled", "text": "Fridge and freezer temperatures in range and logged", "required": true }
+      ]
+    }
+  ]
+}

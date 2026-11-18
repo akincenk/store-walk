@@ -1,0 +1,31 @@
+{
+  "id": "closing",
+  "name": "Store closing",
+  "sections": [
+    {
+      "title": "Customers and floor",
+      "items": [
+        { "id": "close-empty", "text": "Sales floor, fitting rooms and washrooms checked empty", "required": true },
+        { "id": "close-returns", "text": "Returns and go-backs put away or tagged for the morning", "required": false },
+        { "id": "close-recovery", "text": "Main aisle faced and recovered", "required": false }
+      ]
+    },
+    {
+      "title": "Cash",
+      "items": [
+        { "id": "close-tills", "text": "Tills counted, variances recorded", "required": true },
+        { "id": "close-safe", "text": "Deposit prepared and safe locked", "required": true },
+        { "id": "close-terminal", "text": "Card terminal end-of-day batch closed", "required": true }
+      ]
+    },
+    {
+      "title": "Building",
+      "items": [
+        { "id": "close-backdoor", "text": "Receiving door closed and barred", "required": true },
+        { "id": "close-chilled", "text": "Fridge and freezer doors closed, temperatures logged", "required": true },
+        { "id": "close-power", "text": "Non-essential equipment switched off", "required": false },
+        { "id": "close-alarm", "text": "Alarm set and building locked", "required": true }
+      ]
+    }
+  ]
+}
